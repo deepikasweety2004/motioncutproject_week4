@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class TextAdventureGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Text Adventure Game!");
+        System.out.println("You find yourself in a mysterious forest...");
+
+        while (true) {
+            System.out.println("\nChoose your next move:");
+            System.out.println("1. Go deeper into the forest");
+            System.out.println("2. Climb a tree to get a better view");
+            System.out.println("3. Rest by a nearby stream");
+
+            int userChoice = getUserInput(scanner, 3);
+
+            switch (userChoice) {
+                case 1:
+                    System.out.println("As you go deeper, you discover a hidden cave.");
+                    System.out.println("Enter the cave? (1. Yes / 2. No)");
+                    int caveChoice = getUserInput(scanner, 2);
+
+                    if (caveChoice == 1) {
+                        System.out.println("Inside the cave, you find a magical artifact!");
+                        // Add more story and choices for this path
+                    } else {
+                        System.out.println("You decide not to enter the cave and continue exploring.");
+                        // Add more story and choices for this path
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("From the top, you see a distant castle.");
+                    System.out.println("Approach the castle? (1. Yes / 2. No)");
+                    int castleChoice = getUserInput(scanner, 2);
+
+                    if (castleChoice == 1) {
+                        System.out.println("Upon reaching the castle, you meet a friendly wizard.");
+                        // Add more story and choices for this path
+                    } else {
+                        System.out.println("You choose not to approach the castle and explore elsewhere.");
+                        // Add more story and choices for this path
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("While resting, you find a treasure chest.");
+                    System.out.println("Open the chest? (1. Yes / 2. No)");
+                    int chestChoice = getUserInput(scanner, 2);
+
+                    if (chestChoice == 1) {
+                        System.out.println("Inside the chest, you discover valuable gems!");
+                        // Add more story and choices for this path
+                    } else {
+                        System.out.println("You decide not to open the chest and continue your journey.");
+                        // Add more story and choices for this path
+                    }
+                    break;
+
+                default:
+                    System.out.println("Invalid input. Please choose a valid option.");
+            }
+        }
+    }
+
+    private static int getUserInput(Scanner scanner, int maxChoice) {
+        int userChoice = -1;
+        do {
+            System.out.print("Enter your choice (1-" + maxChoice + "): ");
+            try {
+                userChoice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+
+            if (userChoice < 1 || userChoice > maxChoice) {
+                System.out.println("Invalid choice. Please enter a number between 1 and " + maxChoice + ".");
+            }
+        } while (userChoice < 1 || userChoice > maxChoice);
+
+        return userChoice;
+    }
+}
